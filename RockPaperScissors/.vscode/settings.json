@@ -1,0 +1,4 @@
+{
+    "editor.wordWrapColumn": 10,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
