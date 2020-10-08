@@ -31,8 +31,9 @@ const deleteMovieHandler = (movieId) => {
   movies.splice(movieIndex, 1);
   const listRoot = document.getElementById('movie-list');
   listRoot.children[movieIndex].remove();
-//   listRoot.removeChild(listRoot.children[movieIndex]);
+  //   listRoot.removeChild(listRoot.children[movieIndex]);
   closeMovieDeletionModal();
+  udpateUI();
 };
 
 const closeMovieDeletionModal = () => {
@@ -43,17 +44,34 @@ const closeMovieDeletionModal = () => {
 const startDeleteMovieHandler = (movieId) => {
   deleteMovieModal.classList.add('visible');
   closeMovieModal();
-  const cancelDeletionButton = deleteMovieModal.querySelector( '.btn--passive' );
-  let confirmDeletionButton = deleteMovieModal.querySelector( '.btn--danger' );
+  const cancelDeletionButton = deleteMovieModal.querySelector(
+    '.btn--passive'
+  );
+  let confirmDeletionButton = deleteMovieModal.querySelector(
+    '.btn--danger'
+  );
 
-  confirmDeletionButton.replaceWith(confirmDeletionButton.cloneNode(true));
+  confirmDeletionButton.replaceWith(
+    confirmDeletionButton.cloneNode(true)
+  );
 
-  confirmDeletionButton = deleteMovieModal.querySelector( '.btn--danger' );
+  confirmDeletionButton = deleteMovieModal.querySelector(
+    '.btn--danger'
+  );
 
-  cancelDeletionButton.removeEventListener('click', closeMovieDeletionModal);
+  cancelDeletionButton.removeEventListener(
+    'click',
+    closeMovieDeletionModal
+  );
 
-  cancelDeletionButton.addEventListener( 'click', closeMovieDeletionModal);
-  confirmDeletionButton.addEventListener( 'click', deleteMovieHandler.bind(null, movieId) );
+  cancelDeletionButton.addEventListener(
+    'click',
+    closeMovieDeletionModal
+  );
+  confirmDeletionButton.addEventListener(
+    'click',
+    deleteMovieHandler.bind(null, movieId)
+  );
 };
 
 const renderNewMovieElement = (id, title, imageUrl, rating) => {
