@@ -6,23 +6,88 @@ const addMovieCancelButton = addMovieModal.querySelector(
 );
 const confirmAddMovieButton = addMovieCancelButton.nextElementSibling;
 const userInputs = addMovieModal.querySelectorAll('input');
+const entryTextSection = document.getElementById('entry-text');
+const deleteMovieModal = document.getElementById('delete-modal');
 
 const movies = [];
 
 //functions()
+const udpateUI = () => {
+  if (movies.length === 0) {
+    entryTextSection.style.display = 'block';
+  } else {
+    entryTextSection.style.display = 'none';
+  }
+};
+
+const deleteMovieHandler = (movieId) => {
+  let movieIndex = 0;
+  for (const movie of movies) {
+    if (movie.id === movieId) {
+      break;
+    }
+    movieIndex++;
+  }
+  movies.splice(movieIndex, 1);
+  const listRoot = document.getElementById('movie-list');
+  listRoot.children[movieIndex].remove();
+//   listRoot.removeChild(listRoot.children[movieIndex]);
+  closeMovieDeletionModal();
+};
+
+const closeMovieDeletionModal = () => {
+  closeMovieModal();
+  deleteMovieModal.classList.remove('visible');
+};
+
+const startDeleteMovieHandler = (movieId) => {
+  deleteMovieModal.classList.add('visible');
+  closeMovieModal();
+  const cancelDeletionButton = deleteMovieModal.querySelector( '.btn--passive' );
+  let confirmDeletionButton = deleteMovieModal.querySelector( '.btn--danger' );
+
+  confirmDeletionButton.replaceWith(confirmDeletionButton.cloneNode(true));
+
+  confirmDeletionButton = deleteMovieModal.querySelector( '.btn--danger' );
+
+  cancelDeletionButton.removeEventListener('click', closeMovieDeletionModal);
+
+  cancelDeletionButton.addEventListener( 'click', closeMovieDeletionModal);
+  confirmDeletionButton.addEventListener( 'click', deleteMovieHandler.bind(null, movieId) );
+};
+
+const renderNewMovieElement = (id, title, imageUrl, rating) => {
+  const newMovieElement = document.createElement('li');
+  newMovieElement.className = 'movie-element';
+  newMovieElement.innerHTML = `
+        <div class="movie-element_image">
+            <img src="${imageUrl}" alt="${title}">
+        </div>
+        <div class="movie-element__info">
+            <h2>${title}</h2>
+            <p>${rating}/5 stars</p>
+        </div>
+    `;
+  newMovieElement.addEventListener(
+    'click',
+    startDeleteMovieHandler.bind(null, id)
+  );
+  const listRoot = document.getElementById('movie-list');
+  listRoot.append(newMovieElement);
+};
+
 const toggleMovieModal = () => {
   addMovieModal.classList.toggle('visible');
-  toggleBackdrop();
 };
 
 const clearMovieInput = () => {
-    for (const usrInput of userInputs) {
-        usrInput.value = '';
-    }
+  for (const usrInput of userInputs) {
+    usrInput.value = '';
+  }
 };
 
 const cancelAddMovieHandler = () => {
-  toggleMovieModal();
+  closeMovieModal();
   clearMovieInput();
 };
 
@@ -43,6 +108,7 @@ const addMovieHandler = () => {
   }
 
   const newMovie = {
+    id: Math.random().toString(),
     title: titleValue,
     image: imageURLValue,
     rating: ratingValue,
@@ -50,19 +116,35 @@ const addMovieHandler = () => {
 
   movies.push(newMovie);
   console.log(movies);
-  toggleMovieModal();
+  closeMovieModal();
   clearMovieInput();
+  renderNewMovieElement(
+    newMovie.id,
+    newMovie.title,
+    newMovie.image,
+    newMovie.rating
+  );
+  udpateUI();
 };
 
-const toggleBackdrop = () => {
-  backdrop.classList.toggle('visible');
+const showMovieModal = () => {
+  toggleMovieModal();
+  backdrop.classList.add('visible');
+};
+
+const closeMovieModal = () => {
+  addMovieModal.classList.remove('visible');
+  backdrop.classList.remove('visible');
 };
 
 const backdropClickHandler = () => {
-  toggleMovieModal();
+  closeMovieModal();
+  closeMovieDeletionModal();
+  clearMovieInput();
 };
+//functions() end
 
-startAddMovieButton.addEventListener('click', toggleMovieModal);
+startAddMovieButton.addEventListener('click', showMovieModal);
 backdrop.addEventListener('click', backdropClickHandler);
 addMovieCancelButton.addEventListener('click', cancelAddMovieHandler);
 confirmAddMovieButton.addEventListener('click', addMovieHandler);
