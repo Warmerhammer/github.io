@@ -1,0 +1,24 @@
+{
+  "name": "practice-oop-01-project-planner",
+  "version": "1.0.0",
+  "description": "Practice-OOP",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Warmerhammer/github.io.git"
+  },
+  "author": "Richard O'Donnell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Warmerhammer/github.io/issues"
+  },
+  "homepage": "https://github.com/Warmerhammer/github.io#readme",
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.0.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "eslint.debug": true,
+  "javascript.preferences.quoteStyle": "single",
+  "eslint.codeAction.showDocumentation": {
+
+    "enable": true
+  }
+}
