@@ -10,11 +10,16 @@
 }
 
 #character {
-  width: 20px;
-  height: 50px;
-  background-color: red;
-  position: relative;
-  top: 150px;
+  width: 50px;
+  height: 70px;
+  position: absolute;
+  top: 130px;
+}
+
+#counter{
+  margin: 5px 10px;
+  color: green;
+  font-weight: bold;
 }
 
 .animate {
@@ -25,8 +30,8 @@
   width: 20px;
   height: 20px;
   background-color: blue;
-  position: relative;
-  top: 130px;
+  position: absolute;
+  top: 180px;
   left: 480px;
   animation: block linear 1s infinite;
 }

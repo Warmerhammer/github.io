@@ -1,5 +1,6 @@
 const character = document.getElementById("character");
 const block = document.getElementById("block");
+const counter = document.getElementById("counter");
 
 const checkDead = setInterval(() => {
   const characterTop = parseInt(
@@ -8,16 +9,23 @@ const checkDead = setInterval(() => {
   const blockLeft = parseInt(
     window.getComputedStyle(block).getPropertyValue("left")
   );
-  if(blockLeft < 20 && blockLeft > 0 && characterTop >= 130) {
+  if(blockLeft < 50 && blockLeft > 0 && characterTop >= 110) {
     block.style.animation = "none";
     block.style.display = "none";
     alert('You lost :(')
+    block.style.animation = "block linear 1s infinite"
+    block.style.display = "inline";
   }
 }, 10);
+
+let i = 0;
 
 const jump = () => {
   if (character.classList != "animate") {
     character.classList.add("animate");
+    i++;
+    console.log(i);
+    counter.textContent = i; 
   }
   setTimeout(function () {
     character.classList.remove("animate");
@@ -27,10 +35,10 @@ const jump = () => {
 function uniCharCode(event) {}
 
 window.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
+  if (event.key === "Enter" || event.key === " ") {
     jump();
   } else {
-    alert("You didn't press Enter in time.");
+    alert("You didn't press Enter or Spacebar.");
   }
   console.log(event.key);
 });
