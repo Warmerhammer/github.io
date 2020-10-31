@@ -1,19 +1,26 @@
-import React, { useEffect } from 'react';
-import usePosts from './usePosts';
+import { increment, decrement } from './actions';
+import { count } from './react-redux'
+import { connect } from 'react-redux';
+    
+    const Counter = ({ count }) => {
+        return (
+            <div>
+                <button className="increment" onClick={increment}>Increment</button>
+                <button className="decrement" onClick={decrement}>Decrement</button>
+                Current Count: <span>{this.props.count}</span>
+            </div>
+        );
+    };
 
-export default function App() {
-  // Add in code here to use the 'usePosts' hook.
-  const posts = usePosts();
+    const mapStateToProps = state => {
+      return { count: state.count }
+    }
+    
+    export const WrappedCounter = connect(mapStateToProps)(Counter);
+    
+    // Only change code *before* me!
+    // -----------
+    
+  
 
-    const renderedPosts = posts.map(post => {
-      return <li key={post.id}>{post.title}</li>;
-    });
-
-
-  return (
-    <div>
-      <h3>Posts</h3>
-      <ul>{renderedPosts}</ul>
-    </div>
-  );
-}
+   
