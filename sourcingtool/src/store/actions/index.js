@@ -1,0 +1,1 @@
+export { searchButton, generateButton } from './animatedButton';

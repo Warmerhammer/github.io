@@ -1,0 +1,14 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+/*--------------------
+        Focus
+---------------------*/
+
+@focusBorderColor: @white;
+@focusBackground: @white;
+@focusColor: @black;
+@focusBoxShadow: @green;
+
+@placeholderColor: @black;
+@placeholderFocusColor: @black;
