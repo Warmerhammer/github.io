@@ -2,6 +2,8 @@ const character = document.getElementById("character");
 const block = document.getElementById("block");
 const counter = document.getElementById("counter");
 
+let score = 0;
+
 const checkDead = setInterval(() => {
   const characterTop = parseInt(
     window.getComputedStyle(character).getPropertyValue("top")
@@ -15,17 +17,18 @@ const checkDead = setInterval(() => {
     alert('You lost :(')
     block.style.animation = "block linear 1s infinite"
     block.style.display = "inline";
+    score = 0;
   }
 }, 10);
 
-let i = 0;
+
 
 const jump = () => {
   if (character.classList != "animate") {
     character.classList.add("animate");
-    i++;
-    console.log(i);
-    counter.textContent = i; 
+    score++;
+    console.log(score);
+    counter.textContent = score; 
   }
   setTimeout(function () {
     character.classList.remove("animate");
