@@ -41,6 +41,9 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#Readme.md files
+README.md
+
 #node modules
 *.node_modules
 
