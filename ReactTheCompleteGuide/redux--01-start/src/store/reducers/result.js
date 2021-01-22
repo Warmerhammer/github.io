@@ -12,10 +12,11 @@ const deleteResult = (state, action) => {
   return updateObject(state, { results: updatedArray });
 };
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.STORE_RESULT: return updateObject(state, {id: new Date(), payload: action.result * 2});
     case actionTypes.DELETE_RESULT: return deleteResult(state, action);
+    default: return state;
   }
 };
 

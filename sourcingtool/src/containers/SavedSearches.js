@@ -1,47 +1,53 @@
 import React from 'react';
-import { Item } from 'semantic-ui-react';
+import { Container, Segment } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+import history from '../history';
 
-const Save = () => (
-  <Item.Group>
-    <Item>
-      <Item.Image size="small" src="/images/wireframe/image.png" />
+import AnimatedButton from '../UI/button/animatedButton';
+import { savedSegmentsInit } from '../store/actions/segment';
 
-      <Item.Content>
-        <Item.Header as="a">Cute Dog</Item.Header>
-        <Item.Description>
-          <p>
-            Many people also have their own barometers for what makes a cute
-            dog.
-          </p>
-        </Item.Description>
-      </Item.Content>
-    </Item>
+const Save = props => {
 
-    <Item>
-      <Item.Image size="small" src="/images/wireframe/image.png" />
+  const btnArraySeg = _.map(props.savedSegments, e => {
+    return (
+      <Segment key={e.key}>
+        <Segment tertiary compact>{e.content}</Segment>
+        <AnimatedButton
+          segmentKey={e.key}
+          segmentIndex={e.index}
+          position="right"
+          class="ui button black"
+          title="Search"
+        />
+        <AnimatedButton
+          segmentKey={e.key}
+          segmentIndex={e.index}
+          class="ui button black basic"
+          position="left"
+          title="Edit"
+        />
+        <AnimatedButton
+          segmentKey={e.key}
+          segmentIndex={e.index}
+          position="left"
+          class="ui button black basic"
+          title="Delete"
+          pathName={history.location.pathname}
+        />
+        <br /> <br />
+      </Segment>
+    );
+  });
 
-      <Item.Content>
-        <Item.Header as="a">Cute Dog</Item.Header>
-        <Item.Description>
-          <p>
-            I'm baby cloud bread forage fashion axe tilde ramps normcore.
-            Stumptown lomo distillery woke. Kitsch messenger bag distillery,
-            letterpress venmo DIY chicharrones tbh cloud bread coloring book
-            health goth hell of. Ennui butcher meditation next level quinoa,
-            mixtape pug fam aesthetic. Man bun etsy mixtape gluten-free pabst
-            ennui stumptown roof party farm-to-table sartorial bitters cardigan
-            offal lomo. Shaman bespoke man braid tacos, flexitarian vinyl
-            hexagon.
-          </p>
-        </Item.Description>
-      </Item.Content>
-    </Item>
+  return <Container>{btnArraySeg}</Container>;
+};
 
-    <Item>
-      <Item.Image size="small" src="/images/wireframe/image.png" />
-      <Item.Content header="Cute Dog" />
-    </Item>
-  </Item.Group>
-);
+const mapStateToProps = state => {
+  return {
+    savedSegments: state.segments.savedSegments,
+    currentSegmentIndex: state.segments.currentSegmentIndex,
+  };
+};
 
-export default Save;
+export default connect(mapStateToProps, { savedSegmentsInit })(Save);

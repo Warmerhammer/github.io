@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 import {
   generateButton,
   buttonClick,
 } from '../../store/actions/animatedButton';
+
+import { segmentSave, segmentDelete } from '../../store/actions/segment';
 
 const AnimatedButton = props => {
   const [btnClass, setButtonClass] = useState(props.class);
@@ -17,31 +18,34 @@ const AnimatedButton = props => {
   }, []);
 
   const onButtonHoverHandler = title => {
-    console.log(props.btnArray);
+    // console.log(props.btnArray);
+    // console.log(props.savedSegments);
     setIconImage(props.icon[props.title]);
-
-    // let currentArray = props.btnArray[props.id - 1];
-
-    // let newArray = _.filter(
-    //   currentArray,
-    //   _.matches({
-    //     [props.id]: props.title,
-    //   })
-    // );
-
-    // let arrayKey = _.toString(_.valuesIn(newArray[props.id - 1]));
-
-   
   };
 
   const onMouseLeaveHandler = btnClass => {
     setButtonClass(btnClass);
   };
 
-  const onButtonClickHandler = (title, segmentIndex) => {
-    console.log(props.content);
-    props.buttonClick(title, segmentIndex);
-    onMouseLeaveHandler(props.class);
+  const onButtonClickHandler = (
+    e,
+    btnClicked,
+    segmentIndex,
+    content,
+    segmentKey,
+    pathName
+  ) => {
+    e.preventDefault();
+    if (btnClicked === 'Save') {
+      props.segmentSave(
+        segmentIndex,
+        props.btnArray[segmentIndex],
+        btnClicked,
+        content
+      );
+    } else if (btnClicked === 'Delete') {
+      props.segmentDelete(segmentKey, pathName);
+    }
   };
 
   return (
@@ -51,7 +55,16 @@ const AnimatedButton = props => {
       onMouseEnter={() => onButtonHoverHandler(props.title)}
       onMouseLeave={() => onMouseLeaveHandler(props.class)}
       floated={props.position}
-      onClick={() => onButtonClickHandler(props.title, props.segmentIndex)}
+      onClick={e =>
+        onButtonClickHandler(
+          e,
+          props.title,
+          props.segmentIndex,
+          props.content,
+          props.segmentKey,
+          props.pathName
+        )
+      }
     >
       <Button.Content visible>{props.title}</Button.Content>
       <Button.Content hidden>{<Icon name={iconImage} fitted />}</Button.Content>
@@ -63,9 +76,13 @@ const mapStateToProps = state => {
   return {
     icon: state.buttons.iconName,
     btnArray: state.buttons.buttons,
+    savedSegments: state.segments.savedSegments,
   };
 };
 
-export default connect(mapStateToProps, { generateButton, buttonClick })(
-  AnimatedButton
-);
+export default connect(mapStateToProps, {
+  segmentSave,
+  segmentDelete,
+  generateButton,
+  buttonClick,
+})(AnimatedButton);
