@@ -1,0 +1,87 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+div.game {
+  width: 13.05vw;
+  margin: 1vh 0 0 -0.4vw;
+  height: 15vh;
+  position: relative;
+}
+
+img.character {
+  width: 3vw;
+  height: 5vh;
+  position: absolute;
+  top: 9.7vh;
+  left: .7vw;
+}
+
+div.counter {
+  margin: 0;
+  color: #394045;
+  font-weight: 400;
+}
+
+.animate {
+  animation: jump 500ms;
+}
+
+img.block {
+  width: 25px;
+  height: 25px;
+  top: 12vh;
+  left: 12vw;
+  position: absolute;
+}
+
+@keyframes jump {
+  0% {
+    top: 9.7vh;
+  }
+
+  50% {
+    top: 2vh;
+  }
+  70% {
+    top: 2vh;
+  }
+  100% {
+    top: 9.7vh;
+  }
+}
+
+@keyframes block {
+  0% {
+    left: 12vw;
+  }
+  100% {
+    left: -1vw;
+  }
+}
+
+@media (min-width: 1511px) {
+  div.game {
+    width: 14vw;
+  }
+}
+
+@media(min-width: 1670px) {
+  div.game{ 
+    width: 14vw;
+  }
+}
+
+@media (min-width: 1680px) {
+  div.game {
+    width: 13vw;
+  }
+}
+
+
+@media (width: 1700px) {
+  div.game {
+    width: 14.3vw
+  }
+}

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@100;300;400;600;700&display=swap');
+
+.ui.menu .item {
+  font-family: 'IBM Plex Mono';
+  font-weight: 800;
+}
+.ui.basic.grey.button,
+.ui.basic.red.button,
+.ui.basic.black.button {
+  margin-left: 5em;
+  margin-right: auto;
+}

@@ -3,7 +3,7 @@ import { Button, Menu } from 'semantic-ui-react';
 import { NavLink, withRouter } from 'react-router-dom';
 
 const HeaderItem = props => {
-  let butItem = <Menu.Item color="black">{props.title}</Menu.Item>;
+  let butItem = <Menu.Item borderless position="right" color="black">{props.title}</Menu.Item>;
 
   if (props.pathName === props.history.location.pathname) {
     butItem = (

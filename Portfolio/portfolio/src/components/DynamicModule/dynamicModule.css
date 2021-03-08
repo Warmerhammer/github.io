@@ -1,0 +1,10 @@
+div.ui.container.dynamicModule.visible.transition {
+  margin: 0px 10vw 0 0;
+  width: 100%;
+  height: 100%;
+}
+
+div.ui.hidden.content,
+div.ui.visible.content {
+  height: 5vh;
+}

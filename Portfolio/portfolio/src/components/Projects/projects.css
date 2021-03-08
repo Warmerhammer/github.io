@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@100;300;400;600;700&display=swap');
+
+div.ui.raised.segment.dimmed.dimmable.project1Dimmable {
+  width: 30vw;
+}
+
+div.ui.active.transition.visible.dimmer {
+  background-color: #2e0a05;
+  opacity: .80;
+}
+
+p.projectsSpecialColor {
+  font-family: 'IBM Plex Mono';
+  font-weight: 200;
+  color: #727f8a;
+  margin: 0 10vw 1vh 12vw;
+}
+
+li.subBurger {
+  display: inline-block;
+  margin: 0 2vw 0 1vw;
+}
+
+div.ui.segment.raised {
+  margin: 0 10vw 13vh 12vw;
+  padding: 2vh 0 0 1.75vw;
+  width: 50vw;
+  height: 20vh;
+}
+
+.projectsgreytext {
+  font-family: 'IBM Plex Mono';
+  font-weight: 600;
+  font-size: 1em;
+  color: #222629;
+  margin: 0 10vw 1vh 12vw;
+}
+
+
+@media (min-width: 500px) and (min-height: 40px) {
+  div.ui.container.project1Container {
+    width: 350px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 500px) and (min-height: 401px) {
+  div.ui.container.project1Container {
+    width: 450px;
+    height: 400px;
+  }
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+  div.ui.container.project1Container {
+    width: 100%;
+    height: 200px;
+  }
+}

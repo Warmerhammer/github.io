@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@100;300;400;600;700&display=swap');
+
+.specialcolor {
+  font-family: 'IBM Plex Mono';
+  font-weight: 200;
+  color: gray;
+}
+
+.photocontainer {
+  opacity: 1;
+  margin: 0;
+  height: 21em;
+  width: 14em;
+  float: left;
+  position: relative;
+  transition: .7s ease;
+  overflow: hidden;
+  z-index: 500;
+}
+
+div.ui.segment,
+div.ui.segment.AboutMeContainer,
+div.ui.raised.segment.AboutMeContainer
+{
+  background-color: white;
+  margin: 0 10vw 13vh 10vw;
+  padding: 0 0vw 0 15vw;
+  width: 80vw;
+  border: none;
+  box-shadow: none;
+}
+
+div.ui.reveal.AboutMeReveal {
+  margin: 0 0 0 0;
+  height: 0;
+}
+
+.photocontainer:hover .overlay {
+  opacity: 0;
+}
+
+.text {
+  margin: 0 0 0 2vw;
+  font-family: 'IBM Plex Mono';
+  font-weight: 400;
+  font-size: 1.17em;
+  color: #222629;
+}
+
+ul.Languages {
+  align-content: top;
+  padding: 0;
+}
+
+li.sub{
+  display:inline-block;
+  margin: 0 2em 0 1vw;
+}
