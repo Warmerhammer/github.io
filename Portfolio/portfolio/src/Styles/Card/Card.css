@@ -1,40 +1,64 @@
-button.ui.basic.button.LinkedInButton {
-  color: #2867B2;
-  background-color: #2867B2;
-  box-shadow: none;
-  padding: 0 0 .75em 0;
+@media (min-width: 413px) and (min-height: 831px) {
+  button.ui.basic.button.LinkedInButton {
+    color: #2867b2;
+    background-color: #2867b2;
+    box-shadow: none;
+    padding: 0 0 0.75em 0;
+  }
+
+  div.ui.raised.card {
+    margin: 0;
+  }
+
+  .ui.buttons .button:first-child,
+  button.ui.button.thumbsUpButton {
+    background-color: white;
+    opacity: 1;
+    border: none;
+    box-shadow: none;
+    overflow: hidden;
+    border-left: none;
+    padding: 0 0 1em 1em;
+  }
+
+  button.ui.button.thumbsDownButton {
+    background-color: white;
+    border: none;
+    padding: 1em 0 0 0;
+  }
+
+  i.icon.thumbs.up.outline:before,
+  i.thumbs.up.outline.icon {
+    color: '#222629';
+    box-shadow: none;
+    padding: 0 0 1em 0;
+  }
+
+  i.icon.thumbs.down.outline:before,
+  i.thumbs.down.outline.icon {
+    border-color: none;
+  }
 }
 
-div.ui.raised.card {
-  margin: 0;
+@media (max-width: 412px) and (max-height: 830px) {
+  div.right.floated.four.wide.column.AboutMeCardColumn {
+    margin: 0;
+    display: inline-flex;
+  }
+
+  div.ui.container.cardContainer {
+    margin: 0;
+    display: inline-flex;
+    flex: auto;
+    justify-self: center;
+    justify-content: center;
+    z-index: 500000000;
+  }
+  
+  div.ui.raised.card.Card{
+    justify-self: center;
+    justify-content: center;
+  }
 }
 
-.ui.buttons .button:first-child,
-button.ui.button.thumbsUpButton {
-  background-color: white;
-  opacity: 1;
-  border: none;
-  box-shadow: none;
-  overflow: hidden;
-  border-left: none;
-  padding: 0 0 1em 1em;
-}
 
-button.ui.button.thumbsDownButton {
-  background-color: white;
-  border: none;
-  padding: 1em 0 0 0;
-}
-
-i.icon.thumbs.up.outline:before,
-i.thumbs.up.outline.icon {
-  color: '#222629';
-  box-shadow: none;
-  padding: 0 0 1em 0;
-}
-
-i.icon.thumbs.down.outline:before,
-i.thumbs.down.outline.icon {
-  border-color: none;
-
-}

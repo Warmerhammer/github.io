@@ -6,8 +6,7 @@ import {
   Header,
   Segment,
   Grid,
-  Ref,
-  Sticky,
+  Transition,
   Container,
 } from 'semantic-ui-react';
 
@@ -15,102 +14,148 @@ import './projects.css';
 
 import YouTubeLite from '../../Styles/YouTubeLite.gif';
 
-function Projects() {
+function Projects(props) {
   const [active, setActive] = useState(false);
+  const [raised, setRaised] = useState(false);
 
   const handleHide = () => {
     setActive(false);
+    setRaised(false);
+
+    props.dHandleProjectVisible(null);
   };
 
   const handleShow = () => {
     setActive(true);
+    setRaised(true);
+
+    props.dHandleProjectVisible('Project1');
   };
 
   const content = (
     <div>
       <Header as="h2" inverted>
-        Burger Builder
+        YouTube Lite
       </Header>
 
-      <Button>View</Button>
+      <Button
+        onClick={() =>
+          window.open('https://videos-hooks-dusky-tau.vercel.app/', '_blank')
+        }
+      >
+        View
+      </Button>
     </div>
   );
 
-  const contextRef = React.useRef(null);
-
   return (
-    <Container className="project2Container" style={{ margin: '10vh 0 0 30vw' }}>
-      <Segment raised style={{ margin: '0 0 8vh 22vw' }}>
-        <Grid columns={2} style={{ height: '20vh', margin: '0' }}>
-          <Grid.Column
-            fluid
-            stretched
-            style={{ padding: '1vh 0 0 0', width: '30vw' }}
-          >
-            <Ref innerRef={contextRef}>
-              <Sticky context={contextRef}>
-                <p>
-                  A single page web application that allows the user to build a
-                  custom burger, add it to a shopping cart, and pay for it.
-                </p>
-                <ul className="burgerLanguages">
-                  <li className="subBurger">
-                    <li>JavaScript</li>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li style={{ listStyle: 'none' }}>
-                      <br />
-                    </li>
-                  </li>
-
-                  <li className="subBurger">
-                    <li>Redux</li>
-                    <li>Hooks</li>
-                    <li>Firebase</li>
-                    <li style={{ listStyle: 'none' }}>
-                      <br />
-                    </li>
-                  </li>
-
-                  <li className="subBurger">
-                    <li>Modern React</li>
-                    <li style={{ listStyle: 'none' }}>
-                      <br />
-                    </li>
-                    <li style={{ listStyle: 'none' }}>
-                      <br />
-                    </li>
-                    <li style={{ listStyle: 'none' }}>
-                      <br />
-                    </li>
-                  </li>
-                </ul>
-              </Sticky>
-            </Ref>
-          </Grid.Column>
-
-          <Grid.Column
-            style={{ padding: '.3vh 0 0 0', margin: '0 2em 0 0' }}
-            width={5}
+    <Segment className="project2Container">
+      <Grid as={Container} divided columns={2} className="Project2Grid">
+        <Grid.Column
+          width={6}
+          verticalAlign="middle"
+          className="Project2GifGridColumn"
+        >
+          <Transition
+            animation="fade"
+            duration={500}
+            visible={
+              props.dProjectVisible === null ||
+              props.dProjectVisible === 'Project1'
+            }
+            style={{ flex: 'auto' }}
+            unmountOnHide={false}
+            mountOnShow={false}
           >
             <Dimmer.Dimmable
+              src={YouTubeLite}
+              size="large"
+              style={{
+                border: '1px solid grey',
+                margin: 'auto',
+              }}
+              onMouseEnter={() => handleShow()}
+              onMouseLeave={() => handleHide()}
               as={Image}
               dimmed={active}
               dimmer={{ active, content }}
-              onMouseEnter={() => handleShow()}
-              onMouseLeave={() => handleHide()}
-              src={YouTubeLite}
-              className="project1Dimmable"
-              size="large"
-              floated="right"
-              style={{
-                position: 'absolute',
-              }}
             />
-          </Grid.Column>
-        </Grid>
-      </Segment>
-    </Container>
+          </Transition>
+        </Grid.Column>
+        <Segment raised={raised} className="Project2TextSegment">
+          <Transition
+            animation="fade"
+            duartion={500}
+            visible={
+              props.dProjectVisible === null ||
+              props.dProjectVisible === 'Project1'
+            }
+            style={{ margin: 'auto' }}
+            unmountOnHide={false}
+            mountOnShow={false}
+          >
+            <Grid.Column
+              stretched
+              style={{
+                padding: '1vh 0 0 0',
+                margin: 'auto',
+              }}
+              width={5}
+              verticalAlign="middle"
+            >
+              <Container style={{ margin: '0' }}>
+                <p
+                  className="YouTubeLiteGreyText"
+                  style={{ margin: '-1vh 0 1vh 0' }}
+                >
+                  YouTube Lite
+                </p>
+                <p>A single page web application that mimics YouTube.</p>
+                <ul
+                  className="burgerLanguages"
+                  sytle={{ display: 'inline-block' }}
+                >
+                  <li className="subBurger" style={{ display: 'inline-block' }}>
+                    <ul>
+                      <li>JavaScript</li>
+                      <li>HTML5</li>
+                      <li>CSS3</li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li className="subBurger" style={{ display: 'inline-block' }}>
+                    <ul>
+                      <li>Redux</li>
+                      <li>Hooks</li>
+                      <li>Firebase</li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li className="subBurger" style={{ display: 'inline-block' }}>
+                    <ul>
+                      <li>Modern React</li>
+                      <li>YouTube API</li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </Container>
+            </Grid.Column>
+          </Transition>
+        </Segment>
+      </Grid>
+    </Segment>
   );
 }
 

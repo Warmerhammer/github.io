@@ -82,10 +82,10 @@ export default class BlockJumpingGame extends React.Component {
       );
 
       const characterTop = parseInt(
-        window.getComputedStyle(character).getPropertyValue('top')
+        window.getComputedStyle(character).getPropertyValue('bottom')
       );
 
-      if (blockLeft < 37 && blockLeft > 1 && characterTop >= 100) {
+      if ( blockLeft < 37 && blockLeft > 1 && characterTop <= 2) {
         this.setState({
           display: 'You lost...',
           started: false,

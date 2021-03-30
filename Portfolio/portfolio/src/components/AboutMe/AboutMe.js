@@ -6,26 +6,36 @@ import './AboutMe.css';
 
 class AboutMe extends React.Component {
   state = {
-    numberOfColumns: 4
-  }
+    numberOfColumns: 4,
+  };
 
   render() {
     return (
-      <Segment className="AboutMeContainer">
-        <Grid  columns={2} divided>
-          <Grid.Column floated="right" width={this.state.numberOfColumns}>
-            <Card setColumns={() => this.setState({ numberOfColumns: 10 })} />
-          </Grid.Column>
-
-          <Grid.Column width={10}>
+      <Segment
+        className="AboutMeContainer"
+        style={{
+          border: 'none',
+          boxShadow: 'none',
+        }}
+      >
+        <Grid columns={2} divided className="AboutMeGrid">
+          <Grid.Column
+            floated="right"
+            width={this.state.numberOfColumns}
+            style={{ padding: '0 2vw 0 0' }}
+            className="AboutMeCardColumn"
+          >
             <p>
               <span>
-                <span className="specialcolor">02. AboutMe</span>
+                <span className="aboutMeSpecialColor">02. AboutMe</span>
               </span>
               <br />
               <br />
             </p>
+            <Card setColumns={() => this.setState({ numberOfColumns: 10 })} />
+          </Grid.Column>
 
+          <Grid.Column width={10} className="AboutMeTextGrid">
             <div className="text">
               <p>
                 Hello! I'm an aspiring software engineer located in the Bay

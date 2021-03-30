@@ -1,59 +1,325 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@100;300;400;600;700&display=swap');
 
-div.ui.raised.segment.dimmed.dimmable.project1Dimmable {
-  width: 30vw;
-}
+@media (min-width: 413px) and (min-height: 831px) {
+  div.ui.active.transition.visible.dimmer {
+    background-color: #222329;
+    opacity: 0.9;
+  }
 
-div.ui.active.transition.visible.dimmer {
-  background-color: #2e0a05;
-  opacity: .80;
-}
+  p.projectsSpecialColor {
+    font-family: 'IBM Plex Mono';
+    font-weight: 200;
+    color: #727f8a;
+    margin: 0 0 1vh 0;
+  }
 
-p.projectsSpecialColor {
-  font-family: 'IBM Plex Mono';
-  font-weight: 200;
-  color: #727f8a;
-  margin: 0 10vw 1vh 12vw;
-}
+  li.subBurger {
+    display: inline-block;
+    margin: 0 1vw 0 1vw;
+  }
 
-li.subBurger {
-  display: inline-block;
-  margin: 0 2vw 0 1vw;
-}
+  div.ui.segment.project1Segment {
+    margin: auto;
+    padding: 1vh 0 0 1vw;
+    font-size: 1em;
+    color: #222329;
+    font-weight: 600;
+    font-family: 'IBM Plex Mono';
+    flex: auto;
+    border: none;
+    box-shadow: none;
+  }
 
-div.ui.segment.raised {
-  margin: 0 10vw 13vh 12vw;
-  padding: 2vh 0 0 1.75vw;
-  width: 50vw;
-  height: 20vh;
-}
+  .Project0GreyText {
+    font-family: 'IBM Plex Mono';
+    font-weight: 600;
+    font-size: 1em;
+    color: #222629;
+    margin: 0 0 1vh 0;
+  }
 
-.projectsgreytext {
-  font-family: 'IBM Plex Mono';
-  font-weight: 600;
-  font-size: 1em;
-  color: #222629;
-  margin: 0 10vw 1vh 12vw;
-}
+  .Project3GreyText {
+    font-family: 'IBM Plex Mono';
+    font-weight: 600;
+    font-size: 1em;
+    color: #222629;
+    margin: 0 0 1vh 0;
+  }
 
+  div.ui.segment.project1Container {
+    display: block;
+    margin: 0 0 0 0;
+    padding: 0;
+    flex: auto;
+    position: relative;
+    align-content: center;
+    border: none;
+    box-shadow: none;
+  }
 
-@media (min-width: 500px) and (min-height: 40px) {
-  div.ui.container.project1Container {
-    width: 350px;
-    height: 300px;
+  div.ui.container.ui.two.column.grid.Project1Grid {
+    margin: 0;
+    padding: 0 4.5vw 0 5vw;
+    justify-content: center;
+    flex: auto;
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-self: center;
+  }
+
+  div.ui.segment.Project1TextSegment {
+    padding: 0 1.2rem;
+    margin: 0;
+    width: 50%;
+    box-shadow: none;
+    border: none;
+  }
+
+  div.stretched.six.wide.column.Project1GifContainer {
+    margin: 0;
+    padding: 0 .6vw 0 0;
+    flex-direction: row;
+    display: inline-flex;
+    width: 46% !important;
+  }
+
+  /**** PROJECT2 Content *******/
+
+  div.ui.segment.project2Container {
+    display: block;
+    margin: -28vh 0 0 0;
+    padding: 0;
+    flex: auto;
+    position: relative;
+    align-content: center;
+    border: none;
+    box-shadow: none;
+    /* justify-content: center; */
+  }
+
+  div.ui.container.ui.divided.two.column.grid.Project2Grid {
+    margin: 0;
+    padding: 0 4.5vw 0 5vw;
+    justify-content: center;
+    flex: auto;
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-self: center;
+  }
+
+  div.middle.aligned.six.wide.column.Project2GifGridColumn {
+    margin: 0;
+    padding: 0 .6vw 0 0;
+    flex-direction: row;
+    width: 50% !important;
+    display: inline-flex;
+  }
+
+  div.ui.segment.Project2TextSegment {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    box-shadow: none;
+    border: none;
+  }
+
+  .YouTubeLiteGreyText {
+    font-family: 'IBM Plex Mono';
+    font-weight: 600;
+    font-size: 1em;
+    color: #222629;
+    margin: auto;
+  }
+
+  /*********** Project3 Content **********************/
+
+  div.ui.segment.project3Container {
+    display: block;
+    margin: -28vh 0 0 0;
+    padding: 0;
+    flex: auto;
+    position: relative;
+    align-content: center;
+    border: none;
+    box-shadow: none;
+    /* justify-content: center; */
+  }
+
+  div.ui.segment.ui.segment.Project3TextSegment {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    border: none;
+    box-shadow: none;
+  }
+
+  div.ui.container.divided.two.column.grid.Project3Grid {
+    margin: 0;
+    padding: 0 4.5vw 0 5vw;
+    justify-content: center;
+    flex: auto;
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-self: center;
   }
 }
 
-@media (min-width: 500px) and (min-height: 401px) {
-  div.ui.container.project1Container {
-    width: 450px;
-    height: 400px;
-  }
-}
+/***************** MOBILE *********************************/
 
-@media (min-width: 1000px) and (min-height: 700px) {
+@media (max-width: 412px) and (max-height: 830px) {
   div.ui.container.project1Container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex: auto;
+    align-content: center;
+  }
+
+  div.ui.container.ui.two.column.grid.Project1Grid {
+    margin: auto;
+    padding: 0;
+    flex: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  div.ui.segment.Project1TextSegment {
+    padding: 0;
+    margin: 0;
     width: 100%;
-    height: 200px;
+    border: none;
+    box-shadow: none;
+    justify-content: flex-start;
+    text-align: left;
+    display: inline-block;
+  }
+
+  p.projectsSpecialColor {
+    font-family: 'IBM Plex Mono';
+    font-weight: 200;
+    color: #727f8a;
+    margin: 0 0 1vh 0;
+  }
+
+  .Project0GreyText {
+    font-family: 'IBM Plex Mono';
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #222629;
+    margin: 0 0 1vh 0;
+    display: inline-block;
+    justify-content: space-around;
+  }
+
+  ul.burgerLanguages {
+    font-size: 0.8em;
+    justify-content: space-around;
+    flex: auto;
+    display: flex;
+    width: 100%;
+  }
+
+  div.stretched.six.wide.column.Project1GifContainer {
+    padding: 0;
+    margin: 0;
+    flex: auto;
+    display: inline-block !important;
+    width: 50% !important;
+    align-self: start;
+  }
+
+  div.top.aligned.five.wide.column.fade.visible.transition {
+    display: inline-block !important;
+    flex: auto;
+    width: 100%;
+  }
+
+  /**** PROJECT2 Content *******/
+
+  div.ui.container.project2Container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex: auto;
+    width: 100% !important;
+    justify-content: flex-start;
+    margin-left: 0 !important;
+    padding: 0 1em;
+  }
+
+  div.ui.container.ui.divided.two.column.grid.Project2Grid {
+    margin: auto;
+    padding: 0;
+    justify-content: left;
+    flex: auto;
+    align-items: center;
+    display: flex;
+    width: 100% !important;
+  }
+
+  div.middle.aligned.six.wide.column.Project2GifGridColumn {
+    padding: 0;
+    margin: 0;
+    flex: auto;
+    width: 100% !important;
+    display: flex;
+    left: 0;
+  }
+
+  div.ui.segment.Project2TextSegment {
+    padding: 0;
+    margin: auto;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+  }
+
+  .YouTubeLiteGreyText {
+    font-family: 'IBM Plex Mono';
+    font-weight: 600;
+    font-size: 0.8em;
+    color: #222629;
+    margin: auto;
+    display: inline-block;
+    justify-self: flex-start;
+  }
+
+  /*********** Project3 Content **********************/
+
+  div.ui.container.project3Container {
+    margin: 0;
+    padding: 0 1em 0 0;
+    flex: auto;
+    display: flex;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  div.ui.segment.ui.segment.Project3TextSegment {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+  }
+
+  p.Project3GreyText {
+    font-weight: 600;
+    font-size: 0.8em;
+    text-align: left;
+  }
+
+  div.ui.container.divided.two.column.grid.Project3Grid {
+    margin: 0;
+    padding: 0;
+    flex: auto;
+    display: flex;
+    justify-self: start;
+    justify-content: center;
+    justify-items: center;
   }
 }

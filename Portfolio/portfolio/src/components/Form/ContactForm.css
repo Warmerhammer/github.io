@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@100;300;400;600;700&display=swap');
+
+.ui.form.ContactForm {
+  margin: 15vh 20vw 0vh;
+  font-family: 'IBM Plex Mono';
+}
+
+.ui.form .field > label{
+  color: #222629;
+  font-family: 'IBM Plex Mono';
+}
+
+p.ContactTitle {
+  font-family: 'IBM Plex Mono';
+  font-weight: 200;
+  color: #727f8a;
+}
+

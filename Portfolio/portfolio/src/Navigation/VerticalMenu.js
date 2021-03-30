@@ -12,41 +12,62 @@ export default class VerticalMenu extends Component {
       activeItem: this.props.vActiveItem,
       scrolling: false,
       trailingDebounce: _.debounce(
-        () => this.setState({ scrolling: false }),
+        () => this.setState({ scrolling: false, opacity: 0 }),
         1000,
         {
           leading: false,
           trailing: true,
         }
       ),
+      show: false,
+      opacity: 0,
     };
   }
 
   componentDidMount() {
-    this.handelScroll();
-    this.notScrolling();
+    setTimeout(() => {
+      this.handelScroll();
+      this.notScrolling();
+      this.setState({
+        scrolling: true,
+        opacity: 1,
+      });
+    }, 1500);
+
+    setTimeout(() => {
+      this.setState({ scrolling: false, opacity: 0 });
+    }, 3000);
   }
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.state.trailingDebounce);
     document.removeEventListener(
       'scroll',
-      _.debounce(() => this.setState({ scrolling: true }), 100, {
+      _.debounce(() => this.setState({ scrolling: true, opacity: 1 }), 100, {
         leading: true,
         trailing: false,
       })
     );
-    document.removeEventListener('scroll', this.state.trailingDebounce.cancel())
-
+    document.removeEventListener(
+      'scroll',
+      this.state.trailingDebounce.cancel()
+    );
   }
 
   handelScroll = () => {
     document.addEventListener(
       'scroll',
-      _.debounce(() => this.setState({ scrolling: true }), 100, {
-        leading: true,
-        trailing: false,
-      })
+      _.debounce(
+        () => {
+          this.setState({ scrolling: true, opacity: 1 });
+        },
+
+        100,
+        {
+          leading: true,
+          trailing: false,
+        }
+      )
     );
   };
 
@@ -56,11 +77,23 @@ export default class VerticalMenu extends Component {
 
   handleMouseOver = () => {
     this.state.trailingDebounce.cancel();
-    this.setState({ scrolling: true });
+    this.setState({ scrolling: true, show: true, opacity: 1 });
   };
 
   handleMouseLeave = () => {
-    this.setState({ scrolling: false });
+    this.setState({ show: false });
+
+    setTimeout(() => {
+      this.setState({
+        scrolling: false,
+        opacity: 0,
+      });
+    }, 1000);
+  };
+
+  handleClick = route => {
+    this.props.aSetActiveItem(route);
+    this.props.aMenuClick(route);
   };
 
   contextRef = createRef();
@@ -69,45 +102,52 @@ export default class VerticalMenu extends Component {
     return (
       <Ref innerRef={this.contextRef}>
         <Container
-          onMouseEnter={() => this.handleMouseOver()}
+          onMouseOver={() => this.handleMouseOver()}
           onMouseLeave={() => this.handleMouseLeave()}
+          style={{ opacity: `${this.state.opacity}` }}
         >
-          <Transition
-            visible={this.state.scrolling}
-            animation="fade"
-            duration={1000}
-            mountOnShow={false}
-            transitionOnMount={true}
-            unmountOnHide={false}
-          >
             <Sticky active pushing context={this.contextRef}>
               <Menu
                 className="VerticalMenu"
                 size="large"
                 vertical
                 text
-                color="red"
+                color={'black'}
                 borderless
-                fixed="bottom"
+                fixed="right"
               >
-                {this.props.routes.map(route => (
-                  <Menu.Item
-                    name={route.name}
-                    key={route.path}
-                    as={this.props.vNavLink}
-                    to={route.path}
-                    active={this.state.activeItem === `${route.name}`}
-                    onClick={() =>
-                      this.setState({ activeItem: `${route.name}` })
+                {this.props.routes.map((route, index) => (
+                  <Transition
+                    visible={
+                      route.name !== this.props.aNotActiveItem ||
+                      this.state.show === true
                     }
-                    exact
+                    animation="fade"
+                    duration={600}
+                    key={index}
                   >
-                    {route.name}
-                  </Menu.Item>
+                   
+                      <Menu.Item
+                        name={route.name}
+                        key={index}
+                        to={route.name}
+                        active={route.name !== this.props.vActiveItem}
+                        onClick={() => this.handleClick(route)}
+                        position="right"
+                        link={false}
+                        style={{
+                          textAlign: 'center',
+                          opacity: `${this.state.opacity}`,
+                        }}
+                        duration={1000}
+                      >
+                        {route.name}
+                      </Menu.Item>
+                    
+                  </Transition>
                 ))}
               </Menu>
             </Sticky>
-          </Transition>
         </Container>
       </Ref>
     );

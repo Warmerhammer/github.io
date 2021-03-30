@@ -4,7 +4,7 @@ import {
   Image,
   Button,
   Icon,
-  Sticky,
+  Container,
   Grid,
   Transition,
 } from 'semantic-ui-react';
@@ -23,7 +23,6 @@ export default function CardComponent(props) {
 
   const [greenIconName, setGreenIconName] = useState('thumbs up outline');
   const [greenButton, setGreenButton] = useState(true);
-  const [greenButtonColor, setGreenButtonColor] = useState('none');
 
   const [redIconName, setRedIconName] = useState('thumbs down outline');
 
@@ -35,7 +34,6 @@ export default function CardComponent(props) {
     ) {
       setGreenIconName('arrow alternate circle up');
       setRedIconName('x');
-      setGreenButtonColor('green');
       setAnimation('horizontal flip');
       setCardVisible(false);
       setButtonVisible(false);
@@ -43,7 +41,7 @@ export default function CardComponent(props) {
         setButtonVisible(true);
       }, 500);
     }
-  }, [visible, vote]);
+  }, [visible, vote, redIconName]);
 
   const thumbsUpMouseDown = () => {
     if (vote <= 4 && vote >= -4) {
@@ -64,14 +62,12 @@ export default function CardComponent(props) {
       setVisible(false);
       setRedIconName('thumbs down outline');
       setGreenIconName('thumbs up outline');
-      setGreenButtonColor('#222629');
       setCardVisible(true);
     } else if (vote < -4) {
       setVote(-3);
       setVisible(false);
       setRedIconName('thumbs down outline');
       setGreenIconName('thumbs up outline');
-      setGreenButtonColor('#222629');
       setCardVisible(true);
     } else if (vote <= 4 || vote >= 4) {
       setVote(vote - 1);
@@ -80,8 +76,8 @@ export default function CardComponent(props) {
   };
 
   return (
-    <Sticky>
-      <Card raised floated="right" style={{ margin: '0 0 0 0' }}>
+    <Container className="cardContainer">
+      <Card raised floated="right" style={{ margin: '0 0 0 0' }} className="Card">
         <Card.Content>
           <Image
             avatar
@@ -91,7 +87,7 @@ export default function CardComponent(props) {
             floated="right"
           />
 
-          <Card.Header style={{ color: '#2e0a05' }}>
+          <Card.Header style={{ color: '#222629' }}>
             Richard O'Donnell
           </Card.Header>
           <Card.Meta>Software Engineer</Card.Meta>
@@ -116,7 +112,7 @@ export default function CardComponent(props) {
         <Card.Content extra>
           <Grid columns={2}>
             <Grid.Column verticalAlign="bottom">
-              <Button className="LinkedInButton" basic>
+              <Button className="LinkedInButton" basic onClick={() => window.open('https://www.linkedin.com/in/richardo510/', '_blank')}>
                 Connect on{' '}
                 <Icon
                   style={{
@@ -135,8 +131,8 @@ export default function CardComponent(props) {
                   className="thumbsUpButton"
                 >
                   <Icon
-                    color="red"
-                    style={{ color: `${greenButtonColor}` }}
+                    color="green"
+                    
                     name={greenIconName}
                   />
                 </Button>
@@ -144,13 +140,13 @@ export default function CardComponent(props) {
                   onClick={() => thumbsDownMouseDown()}
                   className="thumbsDownButton"
                 >
-                  <Icon color="red" name={redIconName} />
+                  <Icon name={redIconName} style={{ color: '#FF0000', }} />
                 </Button>
               </Grid.Column>
             </Transition>
           </Grid>
         </Card.Content>
       </Card>
-    </Sticky>
+    </Container>
   );
 }

@@ -1,58 +1,171 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@100;300;400;600;700&display=swap');
 
-.specialcolor {
-  font-family: 'IBM Plex Mono';
-  font-weight: 200;
-  color: gray;
+
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@100;300;400;600;700&display=swap');
+
+
+@media (min-width: 412px) and (min-height: 824px) {
+  .aboutMeSpecialColor {
+    font-family: 'IBM Plex Mono';
+    font-weight: 200;
+    color: gray;
+    margin: 0 0 0 .3vw;
+  }
+  
+  .photocontainer {
+    opacity: 1;
+    margin: 0;
+    height: 21em;
+    width: 14em;
+    float: left;
+    position: relative;
+    transition: 0.7s ease;
+    overflow: hidden;
+    z-index: 500;
+  }
+  
+  div.ui.segment,
+  div.ui.segment.AboutMeContainer,
+  div.ui.raised.segment.AboutMeContainer {
+    background-color: white;
+    margin: 0;
+    padding: 0 20vw 0 12vw;
+    position: relative;
+  }
+  
+  div.ui.reveal.AboutMeReveal {
+    margin: 0 0 0 0;
+    height: 0;
+  }
+  
+  .photocontainer:hover .overlay {
+    opacity: 0;
+  }
+  
+  .text {
+    margin: 0 0 0 2vw;
+    font-family: 'IBM Plex Mono';
+    font-weight: 400;
+    font-size: 1em;
+    color: #222629;
+    text-align: justify;
+  }
+  
+  ul.Languages {
+    align-content: top;
+    padding: 0;
+  }
+  
+  li.sub {
+    display: inline-block;
+    margin: 0 2em 0 1vw;
+  }
+
+  div.ui.divided.two.column.grid.AboutMeGrid {
+    margin: 0;
+    padding: 0;
+  }
+  
 }
 
-.photocontainer {
-  opacity: 1;
-  margin: 0;
-  height: 21em;
-  width: 14em;
-  float: left;
-  position: relative;
-  transition: .7s ease;
-  overflow: hidden;
-  z-index: 500;
-}
 
-div.ui.segment,
-div.ui.segment.AboutMeContainer,
-div.ui.raised.segment.AboutMeContainer
-{
-  background-color: white;
-  margin: 0 10vw 13vh 10vw;
-  padding: 0 0vw 0 15vw;
-  width: 80vw;
-  border: none;
-  box-shadow: none;
-}
+/*############################################################################
+####################  Mobile Size  ###########################################
+#############################################################################*/
 
-div.ui.reveal.AboutMeReveal {
-  margin: 0 0 0 0;
-  height: 0;
-}
+@media (max-width: 412px) and (max-height: 830px) {
+  
 
-.photocontainer:hover .overlay {
-  opacity: 0;
-}
 
-.text {
-  margin: 0 0 0 2vw;
-  font-family: 'IBM Plex Mono';
-  font-weight: 400;
-  font-size: 1.17em;
-  color: #222629;
-}
+  .specialcolor {
+    font-family: 'IBM Plex Mono';
+    font-weight: 200;
+    color: gray;
+    margin: 0 0 0 .3vw;
+  }
+  
+  .photocontainer {
+    opacity: 1;
+    margin: 0;
+    height: 21em;
+    width: 14em;
+    float: left;
+    position: relative;
+    transition: 0.7s ease;
+    overflow: hidden;
+    z-index: 500;
+  }
+  
+/************ GRIDS, CONTAINERS, COLUMNS **************************/
 
-ul.Languages {
-  align-content: top;
-  padding: 0;
-}
+  div.ui.segment,
+  div.ui.segment.AboutMeContainer,
+  div.ui.raised.segment.AboutMeContainer {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+  }
+  
+  div.right.floated.four.wide.column.AboutMeCardColumn {
+    margin: 0;
+    flex: auto;
+    justify-content: center;
+    left: 0;
+    width: 100% !important;
+    position: relative;
+    justify-self: center;
+  }
 
-li.sub{
-  display:inline-block;
-  margin: 0 2em 0 1vw;
+  div.ten.wide.column.AboutMeTextGrid,
+  .ui.divided.grid:not([class*="vertically divided"]) > .column:not(.row) {
+    width: 100% !important;
+    box-shadow: none;
+  }
+
+  div.ui.divided.two.column.grid.AboutMeGrid {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  /***********************************************************************/
+
+  .aboutMeSpecialColor {
+    font-family: 'IBM Plex Mono';
+    font-weight: 200;
+    color: gray;
+    margin: 0 0 0 1rem;
+    justify-self: center;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  .text {
+    margin: 0 0 0 2vw;
+    font-family: 'IBM Plex Mono';
+    font-weight: 400;
+    font-size: .8em;
+    color: #222629;
+    text-align: justify;
+    box-shadow: none;
+    justify-content: center;
+  }
+
+  ul.Languages {
+    align-content: top;
+    padding: 0;
+    display: inline-block;
+  }
+  
+  li.sub {
+    display: inline-block;
+    margin: 0 2em 0 1vw;
+  }
+
 }

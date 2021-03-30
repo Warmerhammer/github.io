@@ -1,3 +1,28 @@
-.ui.vertical.text.menu{
-  margin: 0 0 0 2.75vw;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Raleway:wght@100;300;400;600;700&display=swap');
+
+
+
+@media (min-width: 413px) and (min-height: 831px) {
+
+
+  .ui.large.borderless.text.vertical.right.fixed.VerticalMenu.menu,
+  .ui.vertical.text.menu {
+    margin: 30vh 8.2vw 0 0vw;
+    color: #222629;
+    font-family: IBM-plex-mono;
+    font-size: small;
+    
+  }
+
+}
+
+/***************** MOBILE *********************************/
+
+@media (max-width: 412px) and (max-height: 830px) {
+
+  .ui.large.borderless.text.vertical.right.fixed.VerticalMenu.menu,
+  .ui.vertical.text.menu {
+    display: none;
+  }
+
 }

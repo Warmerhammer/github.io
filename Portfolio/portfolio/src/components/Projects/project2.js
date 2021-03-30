@@ -6,93 +6,163 @@ import {
   Header,
   Segment,
   Grid,
-  Ref,
-  Sticky,
   Container,
+  Transition,
 } from 'semantic-ui-react';
 
 import './projects.css';
 
-import YouTubeLite from '../../Styles/YouTubeLite.gif';
+import MonsterKiller from '../../Styles/MonsterKiller.gif';
 
-function Projects() {
+function Projects(props) {
   const [active, setActive] = useState(false);
+  const [raised, setRaised] = useState(false);
 
   const handleHide = () => {
     setActive(false);
+    setRaised(false);
+    props.dHandleProjectVisible(null);
   };
 
   const handleShow = () => {
     setActive(true);
+    setRaised(true);
+    props.dHandleProjectVisible('Project2');
   };
 
   const content = (
     <div>
       <Header as="h2" inverted>
-        Burger Builder
+        Monster Killer
       </Header>
 
-      <Button>View</Button>
+      <Button
+        onClick={() =>
+          window.open(
+            'https://warmerhammer.github.io/monsterKillerStartingProject/',
+            '_blank'
+          )
+        }
+      >
+        View
+      </Button>
     </div>
   );
 
-  const contextRef = React.useRef(null);
-
   return (
-    <Container className="project1Container" style={{ margin: '0' }}>
-      <Segment raised >
-        <Grid columns={2} style={{ height: '20vh', margin: '0 0 0 0' }}>
-          <Grid.Column style={{ padding: '.3vh 0 0 0', margin: '0 2em 0 0' }} width={5}>
+    <Segment className="project3Container">
+      <Grid as={Container} divided columns={2} className="Project3Grid">
+        <Grid.Column
+          style={{ padding: '0 .6vw 0 0', margin: 'auto', flex: 'auto' }}
+          width={6}
+          verticalAlign="middle"
+        >
+          <Transition
+            animation="fade"
+            duration={500}
+            visible={
+              props.dProjectVisible === null ||
+              props.dProjectVisible === 'Project2'
+            }
+            unmountOnHide={false}
+            mountOnShow={false}
+          >
             <Dimmer.Dimmable
-              as={Image}
-              dimmed={active}
-              dimmer={{ active, content }}
               onMouseEnter={() => handleShow()}
               onMouseLeave={() => handleHide()}
-              src={YouTubeLite}
+              dimmed={active}
+              dimmer={{ active, content }}
+              as={Image}
+              src={MonsterKiller}
               className="project1Dimmable"
               size="large"
+              style={{
+                margin: 'auto',
+                border: '1px solid grey',
+              }}
             />
-          </Grid.Column>
-          <Grid.Column fluid stretched style={{ padding: '1vh 0 0 0', width: '30vw' }}>
-            <Ref innerRef={contextRef}>
-              <Sticky context={contextRef}>
+          </Transition>
+        </Grid.Column>
+        <Segment as={Segment} raised={raised} className="Project3TextSegment">
+          <Transition
+            animation="fade"
+            duration={500}
+            visible={
+              props.dProjectVisible === null ||
+              props.dProjectVisible === 'Project2'
+            }
+            style={{ margin: 'auto' }}
+            unmountOnHide={false}
+            mountOnShow={false}
+          >
+            <Grid.Column
+              style={{
+                margin: 'auto',
+                padding: '1vh 0 0 0',
+              }}
+              width={5}
+            >
+              <Container style={{ margin: 'auto' }}>
+                <p className="Project3GreyText">Monster Killer Game</p>
                 <p>
-                  A single page web application that allows the user to build a
-                  custom burger, add it to a shopping cart, and pay for it.
+                  A game built mainly using JavaScript where the user battles an
+                  imaginary monster.
                 </p>
                 <ul className="burgerLanguages">
-                  <li className="subBurger">
-                    <li>JavaScript</li>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li style={{ listStyle: 'none' }}><br/></li>
+                  <li className="subBurger" style={{ display: 'inline-block' }}>
+                    <ul>
+                      <li>JavaScript</li>
+                      <li>HTML5</li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                    </ul>
                   </li>
 
-                  <li className="subBurger">
-                    <li>Redux</li>
-                    <li>Hooks</li>
-                    <li>Firebase</li>
-                    <li style={{ listStyle: 'none' }}>
-                      <br />
-                    </li>
+                  <li className="subBurger" style={{ display: 'inline-block' }}>
+                    <ul>
+                      <li>CSS3</li>
+                      <li>Redux</li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                    </ul>
                   </li>
 
-                  <li className="subBurger">
-                    <li>Modern React</li>
-                    <li style={{ listStyle: 'none' }}><br/></li>
-                    <li style={{ listStyle: 'none' }}><br/></li>
-                    <li style={{ listStyle: 'none' }}>
-                      <br />
-                    </li>
+                  <li className="subBurger" style={{ display: 'inline-block' }}>
+                    <ul>
+                      <li>Hooks</li>
+                      <li>Modern React</li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                      <li style={{ listStyle: 'none' }}>
+                        <br />
+                      </li>
+                    </ul>
                   </li>
                 </ul>
-              </Sticky>
-            </Ref>
-          </Grid.Column>
-        </Grid>
-      </Segment>
-    </Container>
+              </Container>
+            </Grid.Column>
+          </Transition>
+        </Segment>
+      </Grid>
+    </Segment>
   );
 }
 
